@@ -10,7 +10,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: compile
+      - name: checkout repo
+        uses: actions/checkout@master
+      - name: build library and tests
         run: make build
       - name: run tests
         run: make test
