@@ -17,7 +17,7 @@ TEST (OptionalTuple, Main) {
     EXPECT_EQ(x.value<1>(), 1.234);
 
     x.set<2>("Hello!");
-    EXPECT_EQ(x.value<2>(), "fail Hello!");
+    EXPECT_EQ(x.value<2>(), "Hello!");
 
     x.resize<1>();
     ASSERT_THROW(x.value<1>(), std::bad_optional_access);
