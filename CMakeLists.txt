@@ -3,7 +3,9 @@ project(cpp-utils)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+include(FetchContent)
 
+# Don't build additional targets if this repository is included via FetchContent
 set(BUILD_ADDITIONAL_TARGETS OFF)
 if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
     set(BUILD_ADDITIONAL_TARGETS ON)
@@ -13,8 +15,6 @@ add_library(cpp-utils INTERFACE)
 target_include_directories(cpp-utils INTERFACE include)
 
 if(BUILD_ADDITIONAL_TARGETS)
-    include(FetchContent)
-
     FetchContent_Declare(googletest URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip DOWNLOAD_EXTRACT_TIMESTAMP false)
     include(GoogleTest)
     set(INSTALL_GTEST OFF)
